@@ -352,20 +352,20 @@ public class NetworkClient extends Thread
             Economy tmp_cur_economy = new Economy();
             
             tmp_cur_economy.date   = openttd.getGame().getDate();
-            tmp_cur_economy.money  = p.readUint64();
-            tmp_cur_economy.loan   = p.readUint64();
-            tmp_cur_economy.income = p.readUint64();
+            tmp_cur_economy.money  = p.readUint64().multiply(BigInteger.valueOf(2));
+            tmp_cur_economy.loan   = p.readUint64().multiply(BigInteger.valueOf(2));
+            tmp_cur_economy.income = p.readUint64().multiply(BigInteger.valueOf(2));
             
             Economy e1 = new Economy();
             e1.date        = tmp_cur_economy.date.previousQuarter();
             e1.cargo       = p.readUint16();
-            e1.value       = p.readUint64();
+            e1.value       = p.readUint64().multiply(BigInteger.valueOf(2));
             e1.performance = p.readUint16();
             
             Economy e2 = new Economy();
             e2.date        = e1.date.previousQuarter();
             e2.cargo       = p.readUint16();
-            e2.value       = p.readUint64();
+            e2.value       = p.readUint64().multiply(BigInteger.valueOf(2));
             e2.performance = p.readUint16();
 
             if (company.current_economy.isSameQuarter(e1)) {
