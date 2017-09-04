@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+group = 'org.openttd'
+version = '0.1-SNAPSHOT'
+
+description = """Java OpenTTD Admin Library"""
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.6.1'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:'0.9.27'
+    testCompile group: 'junit', name: 'junit', version:'3.8.1'
+}
